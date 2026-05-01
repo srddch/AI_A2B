@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TBRGS Route System</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        .box {
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 400px;
+        }
+
+        input {
+            width: 100%;
+            margin: 5px 0;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            background: black;
+            color: white;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .path {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>TBRGS Route System</h1>
+
+<div class="box">
+    <form method="POST">
+        <input name="origin" placeholder="Origin" required>
+        <input name="destination" placeholder="Destination" required>
+        <input name="time" placeholder="Time (e.g. 08:00)" required>
+        <button type="submit">Find Routes</button>
+    </form>
+</div>
+
+{% if result %}
+<div class="result">
+    <h2>Best Path</h2>
+
+    <div class="path">
+        {{ result.paths[result.best_path_index].nodes }}  
+        | Cost: {{ result.paths[result.best_path_index].cost }}
+    </div>
+
+    <h2>All Paths</h2>
+
+    {% for p in result.paths %}
+        <div class="path">
+            {{ p.nodes }} | Cost: {{ p.cost }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+</body>
+</html>

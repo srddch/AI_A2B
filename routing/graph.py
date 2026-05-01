@@ -4,3 +4,7 @@ graph = {
     "C": [("D", 1)],
     "D": []
 }
+
+
+def load_graph():
+    return graph

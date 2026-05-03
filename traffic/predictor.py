@@ -1,10 +1,16 @@
-MODEL_TYPE = "fake"
+import random
 
 
-def predict_traffic(scats_id, time):
-    if MODEL_TYPE == "fake":
-        import random
-        return random.randint(50, 200)
+def predict_travel_time(edge_features, model_name="lstm"):
+    distance = edge_features.get("distance", 1)
 
-    elif MODEL_TYPE == "lstm":
-        return 100
+    # 假流量
+    flow = random.randint(50, 200)
+
+    speed = 60
+    base_time = distance / speed * 3600
+
+    congestion = flow / 100
+    delay = 30
+
+    return base_time * (1 + congestion) + delay

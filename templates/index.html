@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>TBRGS Route System</title>
+
     <style>
         body {
             font-family: Arial;
@@ -14,7 +15,7 @@
             width: 400px;
         }
 
-        input {
+        input, select {
             width: 100%;
             margin: 5px 0;
             padding: 8px;
@@ -34,8 +35,13 @@
         }
 
         .path {
-            padding: 5px;
+            padding: 8px;
             border-bottom: 1px solid #ddd;
+        }
+
+        .best {
+            font-weight: bold;
+            color: green;
         }
     </style>
 </head>
@@ -46,29 +52,40 @@
 
 <div class="box">
     <form method="POST">
-        <input name="origin" placeholder="Origin" required>
-        <input name="destination" placeholder="Destination" required>
+
+        <input name="origin" placeholder="Origin (e.g. A)" required>
+        <input name="destination" placeholder="Destination (e.g. D)" required>
         <input name="time" placeholder="Time (e.g. 08:00)" required>
+
+        <!-- ⭐ 加分项：模型选择 -->
+        <select name="model">
+            <option value="lstm">LSTM</option>
+            <option value="gru">GRU</option>
+        </select>
+
         <button type="submit">Find Routes</button>
     </form>
 </div>
 
-{% if result %}
+{% if result and result.best_path %}
 <div class="result">
+
     <h2>Best Path</h2>
 
-    <div class="path">
-        {{ result.paths[result.best_path_index].nodes }}  
-        | Cost: {{ result.paths[result.best_path_index].cost }}
+    <div class="path best">
+        {{ " → ".join(result.best_path.nodes) }}
+        | Cost: {{ "%.2f"|format(result.best_path.cost) }}
     </div>
 
     <h2>All Paths</h2>
 
     {% for p in result.paths %}
-        <div class="path">
-            {{ p.nodes }} | Cost: {{ p.cost }}
+        <div class="path {% if p.nodes == result.best_path.nodes %}best{% endif %}">
+            {{ " → ".join(p.nodes) }}
+            | Cost: {{ "%.2f"|format(p.cost) }}
         </div>
     {% endfor %}
+
 </div>
 {% endif %}
 

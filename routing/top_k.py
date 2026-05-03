@@ -1,8 +1,7 @@
-from routing.graph import graph
 from routing.edge_cost import get_edge_cost
 
 
-def dfs_all_paths(start, end, path=None):
+def dfs_all_paths(graph, start, end, path=None):
     if path is None:
         path = []
 
@@ -13,35 +12,34 @@ def dfs_all_paths(start, end, path=None):
 
     paths = []
 
-    for (node, _) in graph.get(start, []):
-        if node not in path:
-            new_paths = dfs_all_paths(node, end, path)
-            paths.extend(new_paths)
+    for edge in graph["edges"]:
+        if edge["from"] == start:
+            node = edge["to"]
+            if node not in path:
+                new_paths = dfs_all_paths(graph, node, end, path)
+                paths.extend(new_paths)
 
     return paths
 
 
-def calculate_path_cost(path, time):
+def calculate_path_cost(graph, path, time):
     total = 0
 
     for i in range(len(path) - 1):
-        from_node = path[i]
-        to_node = path[i + 1]
-
-        for (neighbor, dist) in graph[from_node]:
-            if neighbor == to_node:
-                total += get_edge_cost(from_node, to_node, dist, time)
+        for edge in graph["edges"]:
+            if edge["from"] == path[i] and edge["to"] == path[i + 1]:
+                total += get_edge_cost(edge, time)
 
     return total
 
 
-def find_top_k_paths(origin, destination, time, k=5):
-    paths = dfs_all_paths(origin, destination)
+def find_top_k_paths(graph, origin, destination, time, k=5):
+    paths = dfs_all_paths(graph, origin, destination)
 
     results = []
 
     for p in paths:
-        cost = calculate_path_cost(p, time)
+        cost = calculate_path_cost(graph, p, time)
         results.append({
             "nodes": p,
             "cost": cost
@@ -50,6 +48,5 @@ def find_top_k_paths(origin, destination, time, k=5):
     results.sort(key=lambda x: x["cost"])
 
     return {
-        "paths": results[:k],
-        "best_path_index": 0
+        "paths": results[:k]
     }

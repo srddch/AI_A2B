@@ -1,7 +1,5 @@
-from traffic.predictor import predict_traffic
-from traffic.travel_time import flow_to_travel_time
+from traffic.predictor import predict_travel_time
 
 
-def get_edge_cost(from_node, to_node, distance, time):
-    flow = predict_traffic(to_node, time)
-    return flow_to_travel_time(flow, distance)
+def get_edge_cost(edge, time):
+    return predict_travel_time(edge["features"], model_name="lstm")

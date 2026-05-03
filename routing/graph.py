@@ -1,10 +1,10 @@
-graph = {
-    "A": [("B", 2), ("C", 4)],
-    "B": [("D", 3)],
-    "C": [("D", 1)],
-    "D": []
-}
-
-
 def load_graph():
-    return graph
+    return {
+        "nodes": ["A", "B", "C", "D"],
+        "edges": [
+            {"from": "A", "to": "B", "weight": 2, "features": {"distance": 2}},
+            {"from": "A", "to": "C", "weight": 4, "features": {"distance": 4}},
+            {"from": "B", "to": "D", "weight": 3, "features": {"distance": 3}},
+            {"from": "C", "to": "D", "weight": 1, "features": {"distance": 1}},
+        ]
+    }

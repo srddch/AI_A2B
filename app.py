@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
-from routing.top_k import find_top_k_paths
+from routing.astar import find_route
+from routing.graph import load_graph
 
 app = Flask(__name__)
+graph = load_graph()
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -13,7 +15,7 @@ def index():
         destination = request.form.get("destination")
         time = request.form.get("time")
 
-        result = find_top_k_paths(origin, destination, time)
+        result = find_route(graph, origin, destination, time, "A*")
 
     return render_template("index.html", result=result)
 

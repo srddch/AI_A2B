@@ -1,12 +1,11 @@
-from routing.top_k import find_top_k_paths
+from routing.astar import find_route
+from routing.graph import load_graph
 
 
 def test_basic():
-    res = find_top_k_paths("A", "D", "08:00")
+    graph = load_graph()
+    res = find_route(graph, "A", "D", "08:00")
+
     assert "paths" in res
+    assert "best_path" in res
     assert len(res["paths"]) > 0
-
-
-def test_best_path():
-    res = find_top_k_paths("A", "D", "08:00")
-    assert res["best_path_index"] == 0

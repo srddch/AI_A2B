@@ -1,0 +1,200 @@
+{
+  "nodes": [
+    "2000",
+    "3682",
+    "3126",
+    "3127",
+    "3122",
+    "3120",
+    "4035",
+    "3002",
+    "3685",
+    "4043",
+    "4040",
+    "3804",
+    "3812",
+    "4335",
+    "4324",
+    "4034",
+    "4264",
+    "4263"
+  ],
+  "edges": [
+    {
+      "from": "2000",
+      "to": "3682",
+      "weight": 1.655,
+      "features": {
+        "distance_km": 1.655
+      }
+    },
+    {
+      "from": "3682",
+      "to": "3126",
+      "weight": 1.033,
+      "features": {
+        "distance_km": 1.033
+      }
+    },
+    {
+      "from": "3126",
+      "to": "3127",
+      "weight": 1.856,
+      "features": {
+        "distance_km": 1.856
+      }
+    },
+    {
+      "from": "3127",
+      "to": "3122",
+      "weight": 1.18,
+      "features": {
+        "distance_km": 1.18
+      }
+    },
+    {
+      "from": "3122",
+      "to": "3120",
+      "weight": 0.656,
+      "features": {
+        "distance_km": 0.656
+      }
+    },
+    {
+      "from": "3120",
+      "to": "4035",
+      "weight": 0.604,
+      "features": {
+        "distance_km": 0.604
+      }
+    },
+    {
+      "from": "4035",
+      "to": "3002",
+      "weight": 2.8,
+      "features": {
+        "distance_km": 2.8
+      }
+    },
+    {
+      "from": "2000",
+      "to": "3685",
+      "weight": 0.335,
+      "features": {
+        "distance_km": 0.335
+      }
+    },
+    {
+      "from": "3685",
+      "to": "4043",
+      "weight": 3.712,
+      "features": {
+        "distance_km": 3.712
+      }
+    },
+    {
+      "from": "4043",
+      "to": "4040",
+      "weight": 1.604,
+      "features": {
+        "distance_km": 1.604
+      }
+    },
+    {
+      "from": "4040",
+      "to": "3120",
+      "weight": 1.115,
+      "features": {
+        "distance_km": 1.115
+      }
+    },
+    {
+      "from": "3682",
+      "to": "3804",
+      "weight": 3.058,
+      "features": {
+        "distance_km": 3.058
+      }
+    },
+    {
+      "from": "3804",
+      "to": "3812",
+      "weight": 0.466,
+      "features": {
+        "distance_km": 0.466
+      }
+    },
+    {
+      "from": "3812",
+      "to": "4040",
+      "weight": 0.736,
+      "features": {
+        "distance_km": 0.736
+      }
+    },
+    {
+      "from": "4040",
+      "to": "4035",
+      "weight": 1.66,
+      "features": {
+        "distance_km": 1.66
+      }
+    },
+    {
+      "from": "4035",
+      "to": "4034",
+      "weight": 0.652,
+      "features": {
+        "distance_km": 0.652
+      }
+    },
+    {
+      "from": "4034",
+      "to": "4324",
+      "weight": 1.961,
+      "features": {
+        "distance_km": 1.961
+      }
+    },
+    {
+      "from": "4324",
+      "to": "4335",
+      "weight": 0.386,
+      "features": {
+        "distance_km": 0.386
+      }
+    },
+    {
+      "from": "4335",
+      "to": "3002",
+      "weight": 1.22,
+      "features": {
+        "distance_km": 1.22
+      }
+    },
+    {
+      "from": "3120",
+      "to": "4264",
+      "weight": 2.047,
+      "features": {
+        "distance_km": 2.047
+      }
+    },
+    {
+      "from": "4264",
+      "to": "4263",
+      "weight": 0.796,
+      "features": {
+        "distance_km": 0.796
+      }
+    },
+    {
+      "from": "4263",
+      "to": "3002",
+      "weight": 0.894,
+      "features": {
+        "distance_km": 0.894
+      }
+    }
+  ]
+}

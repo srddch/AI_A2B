@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+traffic/predictor_mock_backup.py
+routing_graph_visualization.png

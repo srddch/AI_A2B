@@ -1,10 +1,34 @@
+import json
+from pathlib import Path
+
+
 def load_graph():
-    return {
-        "nodes": ["A", "B", "C", "D"],
-        "edges": [
-            {"from": "A", "to": "B", "weight": 2, "features": {"distance": 2}},
-            {"from": "A", "to": "C", "weight": 4, "features": {"distance": 4}},
-            {"from": "B", "to": "D", "weight": 3, "features": {"distance": 3}},
-            {"from": "C", "to": "D", "weight": 1, "features": {"distance": 1}},
-        ]
-    }
+
+    """
+    Load the road network graph from data/processed/graph_data.json.
+
+    Graph format:
+        {
+            "nodes": ["2000", "3002", ...],
+            "edges": [
+                {
+                    "from": "2000",
+                    "to": "3682",
+                    "weight": 1.655,
+                    "features": {
+                        "distance_km": 1.655
+                    }
+                }
+            ]
+        }
+
+    Returns:
+        graph dictionary used by the routing module
+    """
+    base_dir = Path(__file__).resolve().parent.parent
+    graph_path = base_dir / "data" / "processed" / "graph_data.json"
+
+    with open(graph_path, "r", encoding="utf-8") as f:
+        graph = json.load(f)
+
+    return graph

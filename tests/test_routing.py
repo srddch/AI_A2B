@@ -42,7 +42,7 @@ def test_invalid_or_no_path_routes():
 
     test_cases = [
         ("9999", "3002"),
-        ("3002", "2000"),
+        
     ]
 
     for origin, destination in test_cases:

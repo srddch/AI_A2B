@@ -1,5 +1,5 @@
 from traffic.predictor import predict_travel_time_by_departure
-
+_edge_cost_cache = {}
 
 def get_edge_cost(edge, departure_time, model="lstm"):
 
@@ -31,6 +31,20 @@ def get_edge_cost(edge, departure_time, model="lstm"):
     }
     """
 
+
+    cache_key = (
+        str(edge["from"]),
+        str(edge["to"]),
+        float(edge["features"]["distance_km"]),
+        str(departure_time),
+        str(model).lower()
+    )
+
+    if cache_key in _edge_cost_cache:
+        return _edge_cost_cache[cache_key]
+    
+
+
     edge_features = {
         "from_site": int(edge["from"]),
         "to_site": int(edge["to"]),
@@ -38,4 +52,7 @@ def get_edge_cost(edge, departure_time, model="lstm"):
         "departure_time": departure_time
     }
 
-    return predict_travel_time_by_departure(edge_features, model_name=model)
+    travel_time = predict_travel_time_by_departure(edge_features, model_name=model)
+    _edge_cost_cache[cache_key] = travel_time
+
+    return travel_time

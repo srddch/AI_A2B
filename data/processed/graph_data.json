@@ -1,79 +1,62 @@
 {
   "nodes": [
+    "970",
     "2000",
-    "3682",
+    "2200",
+    "2820",
+    "2825",
+    "2827",
+    "2846",
+    "3001",
+    "3002",
+    "3120",
+    "3122",
     "3126",
     "3127",
-    "3122",
-    "3120",
-    "4035",
-    "3002",
+    "3180",
+    "3662",
+    "3682",
     "3685",
-    "4043",
-    "4040",
     "3804",
     "3812",
-    "4335",
-    "4324",
+    "4030",
+    "4032",
     "4034",
+    "4035",
+    "4040",
+    "4043",
+    "4051",
+    "4057",
+    "4063",
+    "4262",
+    "4263",
     "4264",
-    "4263"
+    "4270",
+    "4272",
+    "4273",
+    "4321",
+    "4324",
+    "4335",
+    "4812",
+    "4821"
   ],
   "edges": [
     {
-      "from": "2000",
-      "to": "3682",
-      "weight": 1.655,
+      "from": "970",
+      "to": "3685",
+      "weight": 1.388,
       "features": {
-        "distance_km": 1.655
+        "distance_km": 1.388,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "3682",
-      "to": "3126",
-      "weight": 1.033,
+      "from": "970",
+      "to": "2000",
+      "weight": 1.724,
       "features": {
-        "distance_km": 1.033
-      }
-    },
-    {
-      "from": "3126",
-      "to": "3127",
-      "weight": 1.856,
-      "features": {
-        "distance_km": 1.856
-      }
-    },
-    {
-      "from": "3127",
-      "to": "3122",
-      "weight": 1.18,
-      "features": {
-        "distance_km": 1.18
-      }
-    },
-    {
-      "from": "3122",
-      "to": "3120",
-      "weight": 0.656,
-      "features": {
-        "distance_km": 0.656
-      }
-    },
-    {
-      "from": "3120",
-      "to": "4035",
-      "weight": 0.604,
-      "features": {
-        "distance_km": 0.604
-      }
-    },
-    {
-      "from": "4035",
-      "to": "3002",
-      "weight": 2.8,
-      "features": {
-        "distance_km": 2.8
+        "distance_km": 1.724,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
@@ -81,39 +64,431 @@
       "to": "3685",
       "weight": 0.335,
       "features": {
-        "distance_km": 0.335
+        "distance_km": 0.335,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "3685",
+      "from": "2000",
+      "to": "3682",
+      "weight": 1.655,
+      "features": {
+        "distance_km": 1.655,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2000",
+      "to": "970",
+      "weight": 1.724,
+      "features": {
+        "distance_km": 1.724,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2200",
+      "to": "3126",
+      "weight": 1.277,
+      "features": {
+        "distance_km": 1.277,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2200",
+      "to": "4063",
+      "weight": 1.603,
+      "features": {
+        "distance_km": 1.603,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2200",
+      "to": "4057",
+      "weight": 1.948,
+      "features": {
+        "distance_km": 1.948,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2820",
+      "to": "4335",
+      "weight": 1.333,
+      "features": {
+        "distance_km": 1.333,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2820",
+      "to": "3662",
+      "weight": 1.581,
+      "features": {
+        "distance_km": 1.581,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2820",
+      "to": "4324",
+      "weight": 1.712,
+      "features": {
+        "distance_km": 1.712,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2825",
+      "to": "4030",
+      "weight": 1.002,
+      "features": {
+        "distance_km": 1.002,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2825",
+      "to": "4051",
+      "weight": 1.074,
+      "features": {
+        "distance_km": 1.074,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2825",
+      "to": "2827",
+      "weight": 1.486,
+      "features": {
+        "distance_km": 1.486,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2827",
+      "to": "2825",
+      "weight": 1.486,
+      "features": {
+        "distance_km": 1.486,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2827",
+      "to": "4051",
+      "weight": 1.623,
+      "features": {
+        "distance_km": 1.623,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2827",
+      "to": "3180",
+      "weight": 1.779,
+      "features": {
+        "distance_km": 1.779,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2846",
       "to": "4043",
-      "weight": 3.712,
+      "weight": 1.671,
       "features": {
-        "distance_km": 3.712
+        "distance_km": 1.671,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "4043",
+      "from": "2846",
+      "to": "4273",
+      "weight": 2.081,
+      "features": {
+        "distance_km": 2.081,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "2846",
+      "to": "3812",
+      "weight": 2.671,
+      "features": {
+        "distance_km": 2.671,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3001",
+      "to": "3002",
+      "weight": 0.373,
+      "features": {
+        "distance_km": 0.373,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3001",
+      "to": "3662",
+      "weight": 0.774,
+      "features": {
+        "distance_km": 0.774,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3001",
+      "to": "4263",
+      "weight": 0.968,
+      "features": {
+        "distance_km": 0.968,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3002",
+      "to": "3001",
+      "weight": 0.373,
+      "features": {
+        "distance_km": 0.373,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3002",
+      "to": "3662",
+      "weight": 0.687,
+      "features": {
+        "distance_km": 0.687,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3002",
+      "to": "4263",
+      "weight": 0.894,
+      "features": {
+        "distance_km": 0.894,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3120",
+      "to": "4035",
+      "weight": 0.604,
+      "features": {
+        "distance_km": 0.604,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3120",
+      "to": "3122",
+      "weight": 0.656,
+      "features": {
+        "distance_km": 0.656,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3120",
       "to": "4040",
-      "weight": 1.604,
-      "features": {
-        "distance_km": 1.604
-      }
-    },
-    {
-      "from": "4040",
-      "to": "3120",
       "weight": 1.115,
       "features": {
-        "distance_km": 1.115
+        "distance_km": 1.115,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3122",
+      "to": "3120",
+      "weight": 0.656,
+      "features": {
+        "distance_km": 0.656,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3122",
+      "to": "4035",
+      "weight": 0.912,
+      "features": {
+        "distance_km": 0.912,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3122",
+      "to": "3804",
+      "weight": 1.076,
+      "features": {
+        "distance_km": 1.076,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3126",
+      "to": "3682",
+      "weight": 1.033,
+      "features": {
+        "distance_km": 1.033,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3126",
+      "to": "2200",
+      "weight": 1.277,
+      "features": {
+        "distance_km": 1.277,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3126",
+      "to": "3127",
+      "weight": 1.856,
+      "features": {
+        "distance_km": 1.856,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3127",
+      "to": "3122",
+      "weight": 1.18,
+      "features": {
+        "distance_km": 1.18,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3127",
+      "to": "4063",
+      "weight": 1.239,
+      "features": {
+        "distance_km": 1.239,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3127",
+      "to": "3804",
+      "weight": 1.644,
+      "features": {
+        "distance_km": 1.644,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3180",
+      "to": "4057",
+      "weight": 0.925,
+      "features": {
+        "distance_km": 0.925,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3180",
+      "to": "4051",
+      "weight": 1.259,
+      "features": {
+        "distance_km": 1.259,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3180",
+      "to": "2827",
+      "weight": 1.779,
+      "features": {
+        "distance_km": 1.779,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3662",
+      "to": "3002",
+      "weight": 0.687,
+      "features": {
+        "distance_km": 0.687,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3662",
+      "to": "4335",
+      "weight": 0.725,
+      "features": {
+        "distance_km": 0.725,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3662",
+      "to": "3001",
+      "weight": 0.774,
+      "features": {
+        "distance_km": 0.774,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
       "from": "3682",
-      "to": "3804",
-      "weight": 3.058,
+      "to": "3126",
+      "weight": 1.033,
       "features": {
-        "distance_km": 3.058
+        "distance_km": 1.033,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3682",
+      "to": "2000",
+      "weight": 1.655,
+      "features": {
+        "distance_km": 1.655,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3682",
+      "to": "3685",
+      "weight": 1.99,
+      "features": {
+        "distance_km": 1.99,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3685",
+      "to": "2000",
+      "weight": 0.335,
+      "features": {
+        "distance_km": 0.335,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3685",
+      "to": "970",
+      "weight": 1.388,
+      "features": {
+        "distance_km": 1.388,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3685",
+      "to": "3682",
+      "weight": 1.99,
+      "features": {
+        "distance_km": 1.99,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
@@ -121,7 +496,35 @@
       "to": "3812",
       "weight": 0.466,
       "features": {
-        "distance_km": 0.466
+        "distance_km": 0.466,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3804",
+      "to": "4040",
+      "weight": 0.622,
+      "features": {
+        "distance_km": 0.622,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3804",
+      "to": "3122",
+      "weight": 1.076,
+      "features": {
+        "distance_km": 1.076,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "3812",
+      "to": "3804",
+      "weight": 0.466,
+      "features": {
+        "distance_km": 0.466,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
@@ -129,15 +532,107 @@
       "to": "4040",
       "weight": 0.736,
       "features": {
-        "distance_km": 0.736
+        "distance_km": 0.736,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "4040",
-      "to": "4035",
-      "weight": 1.66,
+      "from": "3812",
+      "to": "4043",
+      "weight": 1.286,
       "features": {
-        "distance_km": 1.66
+        "distance_km": 1.286,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4030",
+      "to": "4051",
+      "weight": 0.643,
+      "features": {
+        "distance_km": 0.643,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4030",
+      "to": "4032",
+      "weight": 0.721,
+      "features": {
+        "distance_km": 0.721,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4030",
+      "to": "2825",
+      "weight": 1.002,
+      "features": {
+        "distance_km": 1.002,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4032",
+      "to": "4030",
+      "weight": 0.721,
+      "features": {
+        "distance_km": 0.721,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4032",
+      "to": "4321",
+      "weight": 1.047,
+      "features": {
+        "distance_km": 1.047,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4032",
+      "to": "4034",
+      "weight": 1.063,
+      "features": {
+        "distance_km": 1.063,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4034",
+      "to": "4035",
+      "weight": 0.652,
+      "features": {
+        "distance_km": 0.652,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4034",
+      "to": "4032",
+      "weight": 1.063,
+      "features": {
+        "distance_km": 1.063,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4034",
+      "to": "3120",
+      "weight": 1.256,
+      "features": {
+        "distance_km": 1.256,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4035",
+      "to": "3120",
+      "weight": 0.604,
+      "features": {
+        "distance_km": 0.604,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
@@ -145,47 +640,188 @@
       "to": "4034",
       "weight": 0.652,
       "features": {
-        "distance_km": 0.652
+        "distance_km": 0.652,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "4034",
-      "to": "4324",
-      "weight": 1.961,
+      "from": "4035",
+      "to": "3122",
+      "weight": 0.912,
       "features": {
-        "distance_km": 1.961
+        "distance_km": 0.912,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "4324",
-      "to": "4335",
-      "weight": 0.386,
+      "from": "4040",
+      "to": "3804",
+      "weight": 0.622,
       "features": {
-        "distance_km": 0.386
+        "distance_km": 0.622,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "4335",
-      "to": "3002",
-      "weight": 1.22,
+      "from": "4040",
+      "to": "3812",
+      "weight": 0.736,
       "features": {
-        "distance_km": 1.22
+        "distance_km": 0.736,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "3120",
-      "to": "4264",
-      "weight": 2.047,
+      "from": "4040",
+      "to": "4272",
+      "weight": 0.774,
       "features": {
-        "distance_km": 2.047
+        "distance_km": 0.774,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
-      "from": "4264",
+      "from": "4043",
+      "to": "4273",
+      "weight": 0.79,
+      "features": {
+        "distance_km": 0.79,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4043",
+      "to": "3812",
+      "weight": 1.286,
+      "features": {
+        "distance_km": 1.286,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4043",
+      "to": "4040",
+      "weight": 1.604,
+      "features": {
+        "distance_km": 1.604,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4051",
+      "to": "4030",
+      "weight": 0.643,
+      "features": {
+        "distance_km": 0.643,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4051",
+      "to": "2825",
+      "weight": 1.074,
+      "features": {
+        "distance_km": 1.074,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4051",
+      "to": "4032",
+      "weight": 1.137,
+      "features": {
+        "distance_km": 1.137,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4057",
+      "to": "3180",
+      "weight": 0.925,
+      "features": {
+        "distance_km": 0.925,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4057",
+      "to": "4063",
+      "weight": 1.094,
+      "features": {
+        "distance_km": 1.094,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4057",
+      "to": "4051",
+      "weight": 1.564,
+      "features": {
+        "distance_km": 1.564,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4063",
+      "to": "4057",
+      "weight": 1.094,
+      "features": {
+        "distance_km": 1.094,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4063",
+      "to": "3127",
+      "weight": 1.239,
+      "features": {
+        "distance_km": 1.239,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4063",
+      "to": "2200",
+      "weight": 1.603,
+      "features": {
+        "distance_km": 1.603,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4262",
+      "to": "4812",
+      "weight": 0.793,
+      "features": {
+        "distance_km": 0.793,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4262",
       "to": "4263",
+      "weight": 0.899,
+      "features": {
+        "distance_km": 0.899,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4262",
+      "to": "3001",
+      "weight": 1.026,
+      "features": {
+        "distance_km": 1.026,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4263",
+      "to": "4264",
       "weight": 0.796,
       "features": {
-        "distance_km": 0.796
+        "distance_km": 0.796,
+        "generated_by": "nearest_neighbor"
       }
     },
     {
@@ -193,7 +829,260 @@
       "to": "3002",
       "weight": 0.894,
       "features": {
-        "distance_km": 0.894
+        "distance_km": 0.894,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4263",
+      "to": "4262",
+      "weight": 0.899,
+      "features": {
+        "distance_km": 0.899,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4264",
+      "to": "4270",
+      "weight": 0.632,
+      "features": {
+        "distance_km": 0.632,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4264",
+      "to": "4263",
+      "weight": 0.796,
+      "features": {
+        "distance_km": 0.796,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4264",
+      "to": "3002",
+      "weight": 1.196,
+      "features": {
+        "distance_km": 1.196,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4270",
+      "to": "4264",
+      "weight": 0.632,
+      "features": {
+        "distance_km": 0.632,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4270",
+      "to": "4263",
+      "weight": 1.016,
+      "features": {
+        "distance_km": 1.016,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4270",
+      "to": "4272",
+      "weight": 1.226,
+      "features": {
+        "distance_km": 1.226,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4272",
+      "to": "4040",
+      "weight": 0.774,
+      "features": {
+        "distance_km": 0.774,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4272",
+      "to": "4270",
+      "weight": 1.226,
+      "features": {
+        "distance_km": 1.226,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4272",
+      "to": "3120",
+      "weight": 1.388,
+      "features": {
+        "distance_km": 1.388,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4273",
+      "to": "4043",
+      "weight": 0.79,
+      "features": {
+        "distance_km": 0.79,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4273",
+      "to": "4272",
+      "weight": 1.628,
+      "features": {
+        "distance_km": 1.628,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4273",
+      "to": "3812",
+      "weight": 1.824,
+      "features": {
+        "distance_km": 1.824,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4321",
+      "to": "4032",
+      "weight": 1.047,
+      "features": {
+        "distance_km": 1.047,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4321",
+      "to": "4030",
+      "weight": 1.282,
+      "features": {
+        "distance_km": 1.282,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4321",
+      "to": "4335",
+      "weight": 1.394,
+      "features": {
+        "distance_km": 1.394,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4324",
+      "to": "4335",
+      "weight": 0.386,
+      "features": {
+        "distance_km": 0.386,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4324",
+      "to": "3662",
+      "weight": 0.857,
+      "features": {
+        "distance_km": 0.857,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4324",
+      "to": "3002",
+      "weight": 1.127,
+      "features": {
+        "distance_km": 1.127,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4335",
+      "to": "4324",
+      "weight": 0.386,
+      "features": {
+        "distance_km": 0.386,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4335",
+      "to": "3662",
+      "weight": 0.725,
+      "features": {
+        "distance_km": 0.725,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4335",
+      "to": "3002",
+      "weight": 1.22,
+      "features": {
+        "distance_km": 1.22,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4812",
+      "to": "4262",
+      "weight": 0.793,
+      "features": {
+        "distance_km": 0.793,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4812",
+      "to": "4263",
+      "weight": 0.995,
+      "features": {
+        "distance_km": 0.995,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4812",
+      "to": "4270",
+      "weight": 1.462,
+      "features": {
+        "distance_km": 1.462,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4821",
+      "to": "4262",
+      "weight": 1.125,
+      "features": {
+        "distance_km": 1.125,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4821",
+      "to": "3001",
+      "weight": 1.237,
+      "features": {
+        "distance_km": 1.237,
+        "generated_by": "nearest_neighbor"
+      }
+    },
+    {
+      "from": "4821",
+      "to": "3002",
+      "weight": 1.61,
+      "features": {
+        "distance_km": 1.61,
+        "generated_by": "nearest_neighbor"
       }
     }
   ]

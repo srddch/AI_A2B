@@ -6,3 +6,4 @@ __pycache__/
 
 traffic/predictor_mock_backup.py
 routing_graph_visualization.png
+data/processed/full_graph_data.json

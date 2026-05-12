@@ -1,6 +1,6 @@
 import heapq
 
-from routing.edge_cost import get_edge_cost
+from routing.edge_cost import get_edge_cost, get_path_edge_details
 
 
 def calculate_path_distance(graph, path):
@@ -55,7 +55,8 @@ def find_top_k_paths(graph, origin, destination, departure_time, model="lstm", k
             results.append({
                 "nodes": path,
                 "cost": round(cost_so_far, 2),
-                "total_distance_km": calculate_path_distance(graph, path)
+                "total_distance_km": calculate_path_distance(graph, path),
+                "edge_details": get_path_edge_details(graph, path, departure_time, model)
             })
             continue
 

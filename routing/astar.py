@@ -15,7 +15,7 @@ def calculate_path_distance(graph, path):
     return round(total_distance, 3)
 
 from routing.top_k import find_top_k_paths
-from routing.edge_cost import get_edge_cost
+from routing.edge_cost import get_edge_cost,get_path_edge_details
 
 def heuristic(node, destination, graph):
     """
@@ -72,7 +72,8 @@ def astar_search(graph, origin, destination, departure_time, model="lstm"):
             return {
                 "nodes": path,
                 "cost": round(current_g, 2),
-                "total_distance_km": calculate_path_distance(graph, path)
+                "total_distance_km": calculate_path_distance(graph, path),
+                "edge_details": get_path_edge_details(graph, path, departure_time, model)
             }
 
         for edge in get_outgoing_edges(graph, current_node):

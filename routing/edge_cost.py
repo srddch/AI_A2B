@@ -1,4 +1,5 @@
 from traffic.predictor import predict_travel_time_by_departure
+
 _edge_cost_cache = {}
 
 def get_edge_cost(edge, departure_time, model="lstm"):
@@ -18,19 +19,7 @@ def get_edge_cost(edge, departure_time, model="lstm"):
     Returns:
         travel time in minutes
     """
-    """
-    Calculate the traffic-based travel time for one edge.
-
-    edge format:
-    {
-        "from": "2000",
-        "to": "4049",
-        "features": {
-            "distance_km": 0.65
-        }
-    }
-    """
-
+    
 
     cache_key = (
         str(edge["from"]),
@@ -56,3 +45,40 @@ def get_edge_cost(edge, departure_time, model="lstm"):
     _edge_cost_cache[cache_key] = travel_time
 
     return travel_time
+
+
+
+def get_path_edge_details(graph, path, departure_time, model="lstm"):
+    """
+    Build edge-level details for a completed route.
+
+    Each edge detail includes:
+        - static distance_km
+        - dynamic predicted travel_time_min
+    """
+    edge_details = []
+
+    for i in range(len(path) - 1):
+        from_node = str(path[i])
+        to_node = str(path[i + 1])
+
+        matching_edge = None
+
+        for edge in graph["edges"]:
+            if str(edge["from"]) == from_node and str(edge["to"]) == to_node:
+                matching_edge = edge
+                break
+
+        if matching_edge is None:
+            continue
+
+        travel_time = get_edge_cost(matching_edge, departure_time, model)
+
+        edge_details.append({
+            "from": from_node,
+            "to": to_node,
+            "distance_km": float(matching_edge["features"]["distance_km"]),
+            "travel_time_min": round(travel_time, 2)
+        })
+
+    return edge_details

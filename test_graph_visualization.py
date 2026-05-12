@@ -16,7 +16,8 @@ result = find_route(
 image_path = generate_route_graph_image(
     graph=graph,
     route_result=result,
-    output_path="static/routing_graph.png"
+    output_path="static/routing_graph.png",
+    mode="full_highlight"
 )
 
 print("Generated image:", image_path)

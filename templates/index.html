@@ -61,6 +61,7 @@
         <select name="model">
             <option value="lstm">LSTM</option>
             <option value="gru">GRU</option>
+            <option value="rf">Random Forest</option>
         </select>
 
         <button type="submit">Find Routes</button>
@@ -87,6 +88,21 @@
     {% endfor %}
 
 </div>
+{% endif %}
+{% if graph_image %}
+
+<div style="margin-top:30px;">
+
+    <h2>Route Visualization</h2>
+
+    <img
+        src="/static/routing_graph.png?t={{ time.time() }}"
+        alt="Routing Graph"
+        width="1000"
+    >
+
+</div>
+
 {% endif %}
 
 </body>

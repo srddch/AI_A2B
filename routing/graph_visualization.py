@@ -1,5 +1,9 @@
+import matplotlib
+matplotlib.use("Agg")
+
 import matplotlib.pyplot as plt
 import networkx as nx
+from pathlib import Path
 
 
 def generate_route_graph_image(
@@ -8,16 +12,25 @@ def generate_route_graph_image(
     output_path="static/routing_graph.png"
 ):
 
-    best_path = (
-        route_result["best_path"]["nodes"]
-        if route_result["best_path"]
-        else []
-    )
+    # =========================
+    # Get best path
+    # =========================
+
+    best_path = []
+
+    if route_result and route_result.get("best_path"):
+
+        best_path = route_result["best_path"]["nodes"]
+
+    # =========================
+    # Build graph
+    # =========================
 
     G = nx.DiGraph()
 
     # Add nodes
     for node in graph["nodes"]:
+
         G.add_node(str(node))
 
     # Add edges
@@ -34,12 +47,25 @@ def generate_route_graph_image(
             distance=distance
         )
 
+    # =========================
     # Layout
-    pos = nx.spring_layout(G, seed=42)
+    # =========================
 
-    plt.figure(figsize=(14, 9))
+    pos = nx.spring_layout(
+        G,
+        seed=42
+    )
 
-    # Normal nodes
+    # =========================
+    # Create figure
+    # =========================
+
+    fig = plt.figure(figsize=(14, 9))
+
+    # =========================
+    # Draw normal nodes
+    # =========================
+
     nx.draw_networkx_nodes(
         G,
         pos,
@@ -47,7 +73,10 @@ def generate_route_graph_image(
         node_color="lightgray"
     )
 
-    # Normal edges
+    # =========================
+    # Draw normal edges
+    # =========================
+
     nx.draw_networkx_edges(
         G,
         pos,
@@ -57,7 +86,10 @@ def generate_route_graph_image(
         width=1.5
     )
 
-    # Labels
+    # =========================
+    # Draw labels
+    # =========================
+
     nx.draw_networkx_labels(
         G,
         pos,
@@ -65,13 +97,20 @@ def generate_route_graph_image(
         font_weight="bold"
     )
 
+    # =========================
     # Highlight best path
+    # =========================
+
     if best_path:
 
         best_edges = list(
-            zip(best_path[:-1], best_path[1:])
+            zip(
+                best_path[:-1],
+                best_path[1:]
+            )
         )
 
+        # Highlight nodes
         nx.draw_networkx_nodes(
             G,
             pos,
@@ -80,6 +119,7 @@ def generate_route_graph_image(
             node_color="lightgreen"
         )
 
+        # Highlight edges
         nx.draw_networkx_edges(
             G,
             pos,
@@ -90,14 +130,59 @@ def generate_route_graph_image(
             width=3
         )
 
-    plt.title("Best Route Visualization")
+    # =========================
+    # Edge labels
+    # =========================
+
+    edge_labels = {
+
+        (u, v): f"{d['distance']:.2f} km"
+
+        for u, v, d in G.edges(data=True)
+
+    }
+
+    nx.draw_networkx_edge_labels(
+        G,
+        pos,
+        edge_labels=edge_labels,
+        font_size=8
+    )
+
+    # =========================
+    # Title
+    # =========================
+
+    plt.title(
+        "Best Route Visualization",
+        fontsize=16
+    )
 
     plt.axis("off")
 
     plt.tight_layout()
 
-    plt.savefig(output_path, dpi=300)
+    # =========================
+    # Save image
+    # =========================
 
-    plt.close()
+    output_path = Path(output_path)
 
-    return output_path
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    fig.savefig(
+        output_path,
+        dpi=300,
+        bbox_inches="tight"
+    )
+
+    plt.close(fig)
+
+    # =========================
+    # Return image path
+    # =========================
+
+    return str(output_path)

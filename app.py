@@ -21,9 +21,15 @@ def index():
 
         origin = request.form.get("origin")
         destination = request.form.get("destination")
-        departure_time = request.form.get("time")
 
-        # 新增 model 选择
+        # 日期和时间下拉框
+        date = request.form.get("date")
+        hour = request.form.get("hour")
+
+        # 拼接成模型需要的格式，例如：2006-10-01 08:00:00
+        departure_time = f"{date} {hour}:00:00"
+
+        # 模型选择
         model = request.form.get("model")
 
         result = find_route(
@@ -34,7 +40,6 @@ def index():
             model=model
         )
 
-        # 生成 visualization
         graph_image = generate_route_graph_image(
             graph=graph,
             route_result=result,

@@ -5,105 +5,236 @@
 
     <style>
         body {
-            font-family: Arial;
-            margin: 40px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f8;
+            color: #222;
         }
 
-        .box {
+        .page {
+            max-width: 1100px;
+            margin: 40px auto;
             padding: 20px;
-            border: 1px solid #ccc;
-            width: 400px;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
         }
 
         input, select {
             width: 100%;
-            margin: 5px 0;
-            padding: 8px;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
         }
 
         button {
-            padding: 10px;
             width: 100%;
-            background: black;
+            padding: 13px;
+            background: #111827;
             color: white;
             border: none;
-            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 22px;
         }
 
-        .result {
-            margin-top: 20px;
+        button:hover {
+            background: #374151;
+        }
+
+        .result h2 {
+            margin-top: 0;
         }
 
         .path {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f9fafb;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
         }
 
         .best {
             font-weight: bold;
-            color: green;
+            color: #047857;
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+        }
+
+        .meta {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .route-image {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page {
+                margin: 20px auto;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<h1>TBRGS Route System</h1>
+<div class="page">
 
-<div class="box">
-    <form method="POST">
-
-        <input name="origin" placeholder="Origin (e.g. A)" required>
-        <input name="destination" placeholder="Destination (e.g. D)" required>
-        <input name="time" placeholder="Time (e.g. 08:00)" required>
-
-        <!-- ⭐ 加分项：模型选择 -->
-        <select name="model">
-            <option value="lstm">LSTM</option>
-            <option value="gru">GRU</option>
-            <option value="rf">Random Forest</option>
-        </select>
-
-        <button type="submit">Find Routes</button>
-    </form>
-</div>
-
-{% if result and result.best_path %}
-<div class="result">
-
-    <h2>Best Path</h2>
-
-    <div class="path best">
-        {{ " → ".join(result.best_path.nodes) }}
-        | Cost: {{ "%.2f"|format(result.best_path.cost) }}
+    <div class="header">
+        <h1>TBRGS Route System</h1>
+        <p>AI-based traffic route recommendation with model prediction and route visualization.</p>
     </div>
 
-    <h2>All Paths</h2>
+    <div class="card">
+        <form method="POST">
 
-    {% for p in result.paths %}
-        <div class="path {% if p.nodes == result.best_path.nodes %}best{% endif %}">
-            {{ " → ".join(p.nodes) }}
-            | Cost: {{ "%.2f"|format(p.cost) }}
+            <div class="form-grid">
+
+                <div>
+                    <label>Origin Intersection</label>
+                    <input name="origin" placeholder="Example: 2000" required>
+                </div>
+
+                <div>
+                    <label>Destination Intersection</label>
+                    <input name="destination" placeholder="Example: 3002" required>
+                </div>
+
+                <div>
+                    <label>Travel Date</label>
+                    <select name="date" required>
+                        <option value="2006-10-01">1 Oct 2006</option>
+                        <option value="2006-10-02">2 Oct 2006</option>
+                        <option value="2006-10-03">3 Oct 2006</option>
+                        <option value="2006-10-04">4 Oct 2006</option>
+                        <option value="2006-10-05">5 Oct 2006</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Departure Time</label>
+                    <select name="hour" required>
+                        <option value="06">06:00</option>
+                        <option value="07">07:00</option>
+                        <option value="08" selected>08:00</option>
+                        <option value="09">09:00</option>
+                        <option value="10">10:00</option>
+                        <option value="11">11:00</option>
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="15">15:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
+                        <option value="18">18:00</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Prediction Model</label>
+                    <select name="model">
+                        <option value="lstm">LSTM</option>
+                        <option value="gru">GRU</option>
+                        <option value="rf">Random Forest</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit">Find Best Route</button>
+
+        </form>
+    </div>
+
+    {% if result and result.best_path %}
+    <div class="card result">
+
+        <h2>Best Path</h2>
+
+        <div class="path best">
+            {{ " → ".join(result.best_path.nodes) }}
+            <div class="meta">
+                Cost: {{ "%.2f"|format(result.best_path.cost) }}
+                {% if result.best_path.total_distance_km %}
+                    | Distance: {{ result.best_path.total_distance_km }} km
+                {% endif %}
+            </div>
         </div>
-    {% endfor %}
+
+        <h2>All Candidate Paths</h2>
+
+        {% for p in result.paths %}
+            <div class="path {% if p.nodes == result.best_path.nodes %}best{% endif %}">
+                {{ loop.index }}. {{ " → ".join(p.nodes) }}
+                <div class="meta">
+                    Cost: {{ "%.2f"|format(p.cost) }}
+                    {% if p.total_distance_km %}
+                        | Distance: {{ p.total_distance_km }} km
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+    {% if graph_image %}
+    <div class="card">
+
+        <h2>Route Visualization</h2>
+
+        <img
+            src="/static/routing_graph.png?t={{ time.time() }}"
+            alt="Routing Graph"
+            class="route-image"
+        >
+
+    </div>
+    {% endif %}
 
 </div>
-{% endif %}
-{% if graph_image %}
-
-<div style="margin-top:30px;">
-
-    <h2>Route Visualization</h2>
-
-    <img
-        src="/static/routing_graph.png?t={{ time.time() }}"
-        alt="Routing Graph"
-        width="1000"
-    >
-
-</div>
-
-{% endif %}
 
 </body>
 </html>

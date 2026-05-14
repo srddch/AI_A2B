@@ -4,115 +4,212 @@
     <title>TBRGS Route System</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background: #f4f6f8;
-            color: #222;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #1f2937;
         }
 
         .page {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 20px;
         }
 
         .header {
-            margin-bottom: 25px;
+            background: #111827;
+            color: white;
+            padding: 32px;
+            border-radius: 18px;
+            margin-bottom: 24px;
         }
 
         .header h1 {
-            margin-bottom: 8px;
+            margin: 0 0 10px 0;
+            font-size: 34px;
         }
 
         .header p {
-            color: #666;
             margin: 0;
+            color: #d1d5db;
+            line-height: 1.5;
         }
 
         .card {
             background: white;
-            padding: 25px;
-            border-radius: 14px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
+            padding: 26px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .section-note {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
         }
 
         label {
             font-weight: bold;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 7px;
+            font-size: 14px;
         }
 
         input, select {
             width: 100%;
-            padding: 11px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
             font-size: 14px;
+            background: #f9fafb;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+        }
+
+        .full-row {
+            grid-column: 1 / -1;
         }
 
         button {
             width: 100%;
-            padding: 13px;
-            background: #111827;
+            padding: 14px;
+            background: #2563eb;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             margin-top: 22px;
         }
 
         button:hover {
-            background: #374151;
+            background: #1d4ed8;
         }
 
-        .result h2 {
-            margin-top: 0;
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
         }
 
-        .path {
-            padding: 12px;
-            border-radius: 8px;
+        .summary-box {
             background: #f9fafb;
-            margin-bottom: 10px;
+            padding: 16px;
+            border-radius: 14px;
             border: 1px solid #e5e7eb;
         }
 
-        .best {
+        .summary-title {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 6px;
+        }
+
+        .summary-value {
+            font-size: 18px;
             font-weight: bold;
+        }
+
+        .path {
+            padding: 14px;
+            border-radius: 12px;
+            background: #f9fafb;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
+            line-height: 1.5;
+        }
+
+        .best {
             color: #047857;
             background: #ecfdf5;
             border-color: #a7f3d0;
         }
 
-        .meta {
-            color: #666;
-            font-size: 14px;
+        .path-title {
+            font-weight: bold;
         }
+
+        .meta {
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .warning {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .legend-item {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .gray { background: lightgray; }
+        .green { background: lightgreen; }
+        .orange { background: orange; }
+        .red { background: red; }
 
         .route-image {
             width: 100%;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-            margin-top: 10px;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            margin-top: 8px;
+            background: white;
         }
 
-        @media (max-width: 700px) {
-            .form-grid {
+        @media (max-width: 800px) {
+            .form-grid,
+            .summary-grid {
                 grid-template-columns: 1fr;
             }
 
-            .page {
-                margin: 20px auto;
+            .header h1 {
+                font-size: 26px;
             }
         }
     </style>
@@ -124,21 +221,30 @@
 
     <div class="header">
         <h1>TBRGS Route System</h1>
-        <p>AI-based traffic route recommendation with model prediction and route visualization.</p>
+        <p>
+            AI-based traffic route recommendation using SCATS sensor nodes,
+            traffic prediction models, and route visualization.
+        </p>
     </div>
 
     <div class="card">
+        <h2>Route Search</h2>
+        <p class="section-note">
+            Select origin and destination SCATS site numbers from the graph below.
+            The initial graph shows the full proximity-based SCATS network.
+        </p>
+
         <form method="POST">
 
             <div class="form-grid">
 
                 <div>
-                    <label>Origin Intersection</label>
+                    <label>Origin SCATS Site</label>
                     <input name="origin" placeholder="Example: 2000" required>
                 </div>
 
                 <div>
-                    <label>Destination Intersection</label>
+                    <label>Destination SCATS Site</label>
                     <input name="destination" placeholder="Example: 3002" required>
                 </div>
 
@@ -172,7 +278,7 @@
                     </select>
                 </div>
 
-                <div>
+                <div class="full-row">
                     <label>Prediction Model</label>
                     <select name="model">
                         <option value="lstm">LSTM</option>
@@ -188,34 +294,80 @@
         </form>
     </div>
 
-    {% if result and result.best_path %}
-    <div class="card result">
+    {% if result %}
+    <div class="card">
 
-        <h2>Best Path</h2>
+        {% if result.best_path %}
 
-        <div class="path best">
-            {{ " → ".join(result.best_path.nodes) }}
-            <div class="meta">
-                Cost: {{ "%.2f"|format(result.best_path.cost) }}
-                {% if result.best_path.total_distance_km %}
-                    | Distance: {{ result.best_path.total_distance_km }} km
-                {% endif %}
+            <h2>Routing Result</h2>
+
+            <div class="summary-grid">
+                <div class="summary-box">
+                    <div class="summary-title">Best Path Cost</div>
+                    <div class="summary-value">
+                        {{ "%.2f"|format(result.best_path.cost) }}
+                    </div>
+                </div>
+
+                <div class="summary-box">
+                    <div class="summary-title">Total Distance</div>
+                    <div class="summary-value">
+                        {% if result.best_path.total_distance_km %}
+                            {{ result.best_path.total_distance_km }} km
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="summary-box">
+                    <div class="summary-title">Candidate Paths</div>
+                    <div class="summary-value">
+                        {{ result.paths|length }}
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <h2>All Candidate Paths</h2>
+            <h2>Best Path</h2>
 
-        {% for p in result.paths %}
-            <div class="path {% if p.nodes == result.best_path.nodes %}best{% endif %}">
-                {{ loop.index }}. {{ " → ".join(p.nodes) }}
+            <div class="path best">
+                <div class="path-title">
+                    {{ " → ".join(result.best_path.nodes) }}
+                </div>
                 <div class="meta">
-                    Cost: {{ "%.2f"|format(p.cost) }}
-                    {% if p.total_distance_km %}
-                        | Distance: {{ p.total_distance_km }} km
+                    Cost: {{ "%.2f"|format(result.best_path.cost) }}
+                    {% if result.best_path.total_distance_km %}
+                        | Distance: {{ result.best_path.total_distance_km }} km
                     {% endif %}
                 </div>
             </div>
-        {% endfor %}
+
+            <h2>All Candidate Paths</h2>
+
+            {% for p in result.paths %}
+                <div class="path {% if p.nodes == result.best_path.nodes %}best{% endif %}">
+                    <div class="path-title">
+                        {{ loop.index }}. {{ " → ".join(p.nodes) }}
+                    </div>
+                    <div class="meta">
+                        Cost: {{ "%.2f"|format(p.cost) }}
+                        {% if p.total_distance_km %}
+                            | Distance: {{ p.total_distance_km }} km
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        {% else %}
+
+            <h2>No Route Found</h2>
+
+            <div class="path warning">
+                No valid route could be generated for the selected origin and destination.
+                Please check that both SCATS site numbers exist and are connected in the graph.
+            </div>
+
+        {% endif %}
 
     </div>
     {% endif %}
@@ -223,7 +375,19 @@
     {% if graph_image %}
     <div class="card">
 
-        <h2>Route Visualization</h2>
+        <h2>SCATS Routing Graph</h2>
+
+        <p class="section-note">
+            The graph is based on SCATS site coordinates and proximity-generated edges.
+            It is not a Google Maps road topology.
+        </p>
+
+        <div class="legend">
+            <div class="legend-item"><span class="dot gray"></span>Normal node</div>
+            <div class="legend-item"><span class="dot green"></span>Best path</div>
+            <div class="legend-item"><span class="dot orange"></span>START</div>
+            <div class="legend-item"><span class="dot red"></span>END</div>
+        </div>
 
         <img
             src="/static/routing_graph.png?t={{ time.time() }}"

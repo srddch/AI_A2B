@@ -1,20 +1,16 @@
 from pathlib import Path
 import csv
 
+import matplotlib
+matplotlib.use("Agg")
+
 import matplotlib.pyplot as plt
+plt.ioff()
+
 import networkx as nx
 
 
 def load_coordinate_positions(graph):
-    """
-    Load node positions from site_metadata_merged.csv.
-
-    Position format for networkx:
-        node_id -> (longitude, latitude)
-
-    If coordinates are not available, the missing nodes will later fall back
-    to spring_layout.
-    """
     base_dir = Path(__file__).resolve().parent.parent
     metadata_path = base_dir / "data" / "processed" / "site_metadata_merged.csv"
 
@@ -51,18 +47,6 @@ def generate_route_graph_image(
     output_path="static/routing_graph.png",
     mode="full_highlight"
 ):
-    """
-    Generate a routing graph image for GUI display.
-
-    Modes:
-        - "full": show the complete SCATS graph in grey
-        - "full_highlight": show the complete SCATS graph and highlight best path
-        - "top_k": show only top-k route subgraph and highlight best path
-        - "best": show only the best path
-
-    Returns:
-        str: generated image path
-    """
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -109,19 +93,16 @@ def generate_route_graph_image(
             distance = float(edge["features"]["distance_km"])
             G.add_edge(from_node, to_node, distance=distance)
 
-    # Use real coordinate positions where possible.
     pos = load_coordinate_positions(graph)
 
-    # Fallback for missing node positions.
     missing_nodes = [node for node in G.nodes() if node not in pos]
     if missing_nodes:
         fallback_pos = nx.spring_layout(G, seed=42, k=1.4)
         for node in missing_nodes:
             pos[node] = fallback_pos[node]
 
-    plt.figure(figsize=(15, 10))
+    fig = plt.figure(figsize=(15, 10))
 
-    # Draw full / selected graph background.
     nx.draw_networkx_nodes(
         G,
         pos,
@@ -142,7 +123,6 @@ def generate_route_graph_image(
         alpha=0.7
     )
 
-    # Draw general node labels.
     nx.draw_networkx_labels(
         G,
         pos,
@@ -155,7 +135,6 @@ def generate_route_graph_image(
     if highlight_enabled and best_path:
         best_edges = list(zip(best_path[:-1], best_path[1:]))
 
-        # Highlight best path edges.
         nx.draw_networkx_edges(
             G,
             pos,
@@ -166,7 +145,6 @@ def generate_route_graph_image(
             width=3.2
         )
 
-        # Highlight best path nodes.
         nx.draw_networkx_nodes(
             G,
             pos,
@@ -177,7 +155,6 @@ def generate_route_graph_image(
             linewidths=1.5
         )
 
-        # Mark origin and destination more clearly.
         origin = best_path[0]
         destination = best_path[-1]
 
@@ -201,7 +178,6 @@ def generate_route_graph_image(
             linewidths=1.5
         )
 
-        # Label best path nodes with order.
         path_order_labels = {}
 
         for index, node in enumerate(best_path, start=1):
@@ -226,7 +202,6 @@ def generate_route_graph_image(
             }
         )
 
-        # Only label best path edges to avoid clutter.
         best_edge_labels = {}
 
         if route_result and route_result.get("best_path"):
@@ -268,7 +243,8 @@ def generate_route_graph_image(
     plt.title(title, fontsize=16)
     plt.axis("off")
     plt.tight_layout()
-    plt.savefig(output_path, dpi=300)
-    plt.close()
+
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
 
     return str(output_path)

@@ -15,21 +15,17 @@ graph = load_graph()
 def index():
 
     result = None
-    graph_image = None
+    graph_image = "static/routing_graph.png"
 
     if request.method == "POST":
 
         origin = request.form.get("origin")
         destination = request.form.get("destination")
 
-        # 日期和时间下拉框
         date = request.form.get("date")
         hour = request.form.get("hour")
-
-        # 拼接成模型需要的格式，例如：2006-10-01 08:00:00
         departure_time = f"{date} {hour}:00:00"
 
-        # 模型选择
         model = request.form.get("model")
 
         result = find_route(
@@ -40,10 +36,19 @@ def index():
             model=model
         )
 
-        graph_image = generate_route_graph_image(
+        generate_route_graph_image(
             graph=graph,
             route_result=result,
-            output_path="static/routing_graph.png"
+            output_path=graph_image,
+            mode="full_highlight"
+        )
+
+    else:
+        generate_route_graph_image(
+            graph=graph,
+            route_result=None,
+            output_path=graph_image,
+            mode="full"
         )
 
     return render_template(

@@ -51,8 +51,29 @@ def main():
     nodes = [site["site_number"] for site in sites]
 
     edges = []
+    edge_set = set()
     k_nearest = 3
     max_distance_km = 3.0
+
+    def add_edge(from_site, to_site, distance):
+        edge_key = (str(from_site), str(to_site))
+
+        if edge_key in edge_set:
+            return
+
+        edges.append(
+            {
+                "from": str(from_site),
+                "to": str(to_site),
+                "weight": round(distance, 3),
+                "features": {
+                    "distance_km": round(distance, 3),
+                    "generated_by": "nearest_neighbor_bidirectional",
+                },
+            }
+        )
+
+        edge_set.add(edge_key)
 
     for site in sites:
         distances = []
@@ -74,18 +95,9 @@ def main():
         distances.sort(key=lambda x: x[1])
 
         for to_site, distance in distances[:k_nearest]:
-            edges.append(
-                {
-                    "from": site["site_number"],
-                    "to": to_site,
-                    "weight": round(distance, 3),
-                    "features": {
-                        "distance_km": round(distance, 3),
-                        "generated_by": "nearest_neighbor",
-                    },
-                }
-            )
-
+            add_edge(site["site_number"], to_site, distance)
+            add_edge(to_site, site["site_number"], distance)
+            
     graph = {
         "nodes": nodes,
         "edges": edges,

@@ -6,3 +6,5 @@ networkx
 scikit-learn
 tensorflow
 joblib
+xlrd
+colorama
